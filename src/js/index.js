@@ -1,3 +1,5 @@
+import { genres } from "./Genres";
+
 const DOMSelectors = {
   grid: document.querySelector(".movie-grid"),
 };
@@ -9,6 +11,8 @@ const init = async function () {
     const response = await fetch(query);
     const data = await response.json();
     data.results.forEach((movie) => {
+      let genre_ids = [];
+      genres.map((el) => (genre_ids[el.id] = el.name));
       DOMSelectors.grid.insertAdjacentHTML(
         "beforeend",
         `<div class="movie-card">
@@ -32,7 +36,7 @@ const init = async function () {
         </div>
 
         <div class="movie-genres">
-          <div>${movie.genre_ids}</div>
+          <div>${movie.genre_ids.map((id) => genre_ids[id])}</div>
         </div>
       </div>
     </div>`
