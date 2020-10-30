@@ -1,8 +1,6 @@
 import { genres } from "./Genres";
+import { DOMSelectors } from "./DOM";
 
-const DOMSelectors = {
-  grid: document.querySelector(".movie-grid"),
-};
 const key = "f704efb92e04f3cc013b7eb337280371";
 const query = ` https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&vote_count.gte=10000&vote_average.gte=8`;
 
